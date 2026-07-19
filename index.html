@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Love Ko Nimo?</title>
+  <style>
+    body {
+      height: 100vh;
+      margin: 0;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: pink;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 50px;
+      color: #ff3366;
+    }
+
+    button {
+      padding: 15px 30px;
+      font-size: 25px;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      margin: 10px;
+    }
+
+    #yes {
+      background: #4CAF50;
+      color: white;
+    }
+
+    #no {
+      background: #ff4444;
+      color: white;
+      position: relative;
+    }
+
+    .randomNo {
+      position: absolute;
+      background: #ff4444;
+      color: white;
+      padding: 12px 25px;
+      border-radius: 20px;
+      border: none;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    #videoBox {
+      display: none;
+    }
+
+    video {
+      width: 400px;
+      border-radius: 20px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div id="main">
+  <h1>Love ko nimo? ❤️</h1>
+  <button id="yes">Yes 😍</button>
+  <button id="no">No 😜</button>
+</div>
+
+<div id="videoBox">
+  <h1>Yay! Love pud tika ❤️</h1>
+  <video controls autoplay>
+    <source src="love-video.mp4" type="video/mp4">
+    Your browser does not support video.
+  </video>
+</div>
+
+
+<script>
+  let noCount = 0;
+
+  function createNoButton() {
+    noCount++;
+
+    let btn = document.createElement("button");
+    btn.innerHTML = "No 😭";
+    btn.className = "randomNo";
+
+    btn.style.left = Math.random() * (window.innerWidth - 120) + "px";
+    btn.style.top = Math.random() * (window.innerHeight - 60) + "px";
+
+    btn.onclick = createNoButton;
+
+    document.body.appendChild(btn);
+  }
+
+  document.getElementById("no").onclick = createNoButton;
+
+  document.getElementById("yes").onclick = function() {
+    document.getElementById("main").style.display = "none";
+    document.getElementById("videoBox").style.display = "block";
+  };
+</script>
+
+</body>
+</html>
